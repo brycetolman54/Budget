@@ -1,4 +1,5 @@
-import { BrowserRouter } from "react-router-dom";
+import * as React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 const App = () => {
@@ -7,24 +8,30 @@ const App = () => {
     };
 
     return (
-        <>
-            <BrowserRouter>
-                isAuthenticated() ? (
+        <BrowserRouter>
+            {isAuthenticated() ? (
                 <AuthenticatedRoutes />
-                ) : (
+            ) : (
                 <UnauthenticatedRoutes />
-                );
-            </BrowserRouter>
-        </>
+            )}
+        </BrowserRouter>
     );
 };
 
 const AuthenticatedRoutes = () => {
-    return <Routes></Routes>;
+    return (
+        <Routes>
+            <Route path="/" element={<div>Home</div>} />
+        </Routes>
+    );
 };
 
 const UnauthenticatedRoutes = () => {
-    return <></>;
+    return (
+        <Routes>
+            <Route path="/" element={<div>Login</div>} />
+        </Routes>
+    );
 };
 
 export default App;
