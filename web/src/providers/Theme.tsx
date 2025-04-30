@@ -1,27 +1,57 @@
 import { Context, createContext, useContext, useState } from "react";
+import { Theme } from "shared";
 
-interface Theme {
-    primary: string;
-    secondary: string;
-    tertiary: string;
+const PRIMARY_KEY = "primary_theme";
+const SECONDARY_KEY = "secondary_theme";
+const TERTIARY_KEY = "tertiary_theme";
+
+interface ThemeSet {
+    currentTheme: Theme;
+    updateTheme: (theme: Theme) => void;
 }
 
 const defaultTheme: Theme = {
-    primary: "#0f0",
-    secondary: "#fff",
-    tertiary: "#f0f0f0",
+    primary: "#000000",
+    secondary: "#FFFFFF",
+    tertiary: "#000000",
 };
 
-export const ThemeContext: Context<Theme> = createContext<Theme>(defaultTheme);
+const defaultThemeSet: ThemeSet = {
+    currentTheme: defaultTheme,
+    updateTheme: (theme: Theme) => {},
+};
+
+export const ThemeContext: Context<ThemeSet> =
+    createContext<ThemeSet>(defaultThemeSet);
+
 interface Props {
     children: React.ReactNode;
 }
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
-    const [theme, _] = useState<Theme>(defaultTheme);
+    const saveToLocalStorage = (
+        primary: string,
+        secondary: string,
+        tertiary: string
+    ): void => {
+        localStorage.setItem(PRIMARY_KEY, primary);
+        localStorage.setItem(SECONDARY_KEY, secondary);
+        localStorage.setItem(TERTIARY_KEY, tertiary);
+    };
+
+    const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+    const updateTheme = (theme: Theme): void => {
+        setTheme(theme);
+        saveToLocalStorage(theme.primary, theme.secondary, theme.tertiary);
+    };
 
     return (
-        <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+        <ThemeContext.Provider
+            value={{ currentTheme: theme, updateTheme: updateTheme }}
+        >
+            {children}
+        </ThemeContext.Provider>
     );
 };
 

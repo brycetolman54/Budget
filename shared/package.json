@@ -1,15 +1,28 @@
 {
   "name": "shared",
-  "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.ts",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build && npm run compile",
+    "preview": "vite preview",
+    "compile": "npm run clean && tsc",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.5.2"
   },
   "dependencies": {
-    "uuid": "^11.1.0"
-  }
+    "@types/uuid": "^9.0.8",
+    "date-fns": "^3.3.1",
+    "uuid": "^9.0.1",
+    "vite-plugin-dts": "^3.7.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
