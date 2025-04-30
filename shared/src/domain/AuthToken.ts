@@ -42,7 +42,7 @@ export class AuthToken {
         return JSON.stringify(this);
     }
 
-    public fromJson(json: string | null | undefined): AuthToken | null {
+    public static fromJson(json: string | null | undefined): AuthToken | null {
         if (!!json) {
             const jsonObject: {
                 _token: string;

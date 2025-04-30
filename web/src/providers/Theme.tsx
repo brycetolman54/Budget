@@ -1,24 +1,23 @@
 import { Context, createContext, useContext, useState } from "react";
-import { Theme } from "shared";
-
-const PRIMARY_KEY = "primary_theme";
-const SECONDARY_KEY = "secondary_theme";
-const TERTIARY_KEY = "tertiary_theme";
+import { defaultTheme, Theme } from "shared";
+import { useUser } from "./User";
 
 interface ThemeSet {
-    currentTheme: Theme;
+    theme: Theme;
     updateTheme: (theme: Theme) => void;
+    applyTheme: (theme: Theme) => void;
 }
 
-const defaultTheme: Theme = {
-    primary: "#000000",
-    secondary: "#FFFFFF",
-    tertiary: "#000000",
-};
-
 const defaultThemeSet: ThemeSet = {
-    currentTheme: defaultTheme,
-    updateTheme: (theme: Theme) => {},
+    theme: defaultTheme,
+    updateTheme: (theme: Theme) => {
+        if (!!theme) {
+        }
+    },
+    applyTheme: (theme: Theme) => {
+        if (!!theme) {
+        }
+    },
 };
 
 export const ThemeContext: Context<ThemeSet> =
@@ -28,27 +27,37 @@ interface Props {
     children: React.ReactNode;
 }
 
+const { user } = useUser();
+
 const ThemeProvider: React.FC<Props> = ({ children }) => {
-    const saveToLocalStorage = (
-        primary: string,
-        secondary: string,
-        tertiary: string
-    ): void => {
-        localStorage.setItem(PRIMARY_KEY, primary);
-        localStorage.setItem(SECONDARY_KEY, secondary);
-        localStorage.setItem(TERTIARY_KEY, tertiary);
+    const retrieveFromUser = (): Theme => {
+        const primary = user?.theme.primary || defaultTheme.primary;
+        const secondary = user?.theme.secondary || defaultTheme.secondary;
+        const tertiary = user?.theme.tertiary || defaultTheme.tertiary;
+        return { primary, secondary, tertiary };
     };
 
-    const [theme, setTheme] = useState<Theme>(defaultTheme);
+    const [theme, setTheme] = useState<Theme>(retrieveFromUser());
 
-    const updateTheme = (theme: Theme): void => {
-        setTheme(theme);
-        saveToLocalStorage(theme.primary, theme.secondary, theme.tertiary);
+    const applyTheme = (theme: Theme) => {
+        document.documentElement.style.setProperty("--primary", theme.primary);
+        document.documentElement.style.setProperty(
+            "--secondary",
+            theme.secondary
+        );
+        document.documentElement.style.setProperty(
+            "--tertiary",
+            theme.tertiary
+        );
     };
 
     return (
         <ThemeContext.Provider
-            value={{ currentTheme: theme, updateTheme: updateTheme }}
+            value={{
+                theme: theme,
+                updateTheme: setTheme,
+                applyTheme: applyTheme,
+            }}
         >
             {children}
         </ThemeContext.Provider>

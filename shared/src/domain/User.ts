@@ -45,7 +45,7 @@ export class User {
         return JSON.stringify(this);
     }
 
-    public fromJson(json: string | null): User | null {
+    public static fromJson(json: string | null): User | null {
         if (!!json) {
             const jsonObject: {
                 _username: string;

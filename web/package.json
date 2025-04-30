@@ -1,11 +1,11 @@
 {
-    "name": "package.json",
+    "name": "web",
     "private": true,
     "version": "0.0.0",
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsc -b && vite build",
+        "build": "tsc && vite build",
         "lint": "eslint .",
         "preview": "vite preview"
     },
@@ -13,7 +13,20 @@
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-router-dom": "^7.5.3",
-        "shared": "file:../shared"
+        "shared": "file:../shared",
+        "vite-plugin-commonjs": "^0.10.4"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     },
     "devDependencies": {
         "@eslint/js": "^9.22.0",

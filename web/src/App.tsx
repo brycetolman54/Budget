@@ -10,14 +10,15 @@ const App = () => {
         return false;
     };
 
-    const theme = useTheme();
+    const { theme, applyTheme } = useTheme();
 
     useEffect(() => {
-        document.documentElement.style.setProperty("--primary", theme.primary);
+        applyTheme(theme);
     }, [theme]);
 
     return (
         <>
+            <div id="mine">mine</div>
             <BrowserRouter>
                 {isAuthenticated() ? (
                     <AuthenticatedRoutes />
