@@ -14,10 +14,7 @@ interface UserSet {
 const defaultUserSet: UserSet = {
     user: null,
     token: null,
-    setUser: (user: User, token: AuthToken, remember: boolean) => {
-        if (user || token || remember) {
-        }
-    },
+    setUser: (user: User, token: AuthToken, remember: boolean) => {},
     clearUser: () => null,
 };
 

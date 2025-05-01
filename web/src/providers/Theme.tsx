@@ -10,14 +10,8 @@ interface ThemeSet {
 
 const defaultThemeSet: ThemeSet = {
     theme: defaultTheme,
-    updateTheme: (theme: Theme) => {
-        if (!!theme) {
-        }
-    },
-    applyTheme: (theme: Theme) => {
-        if (!!theme) {
-        }
-    },
+    updateTheme: (theme: Theme) => {},
+    applyTheme: (theme: Theme) => {},
 };
 
 export const ThemeContext: Context<ThemeSet> =
@@ -27,14 +21,15 @@ interface Props {
     children: React.ReactNode;
 }
 
-const { user } = useUser();
-
 const ThemeProvider: React.FC<Props> = ({ children }) => {
+    const { user } = useUser();
+
     const retrieveFromUser = (): Theme => {
         const primary = user?.theme.primary || defaultTheme.primary;
         const secondary = user?.theme.secondary || defaultTheme.secondary;
         const tertiary = user?.theme.tertiary || defaultTheme.tertiary;
-        return { primary, secondary, tertiary };
+        const light = user?.theme.light || defaultTheme.light;
+        return { primary, secondary, tertiary, light };
     };
 
     const [theme, setTheme] = useState<Theme>(retrieveFromUser());
@@ -48,6 +43,10 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
         document.documentElement.style.setProperty(
             "--tertiary",
             theme.tertiary
+        );
+        document.documentElement.style.setProperty(
+            "--background",
+            theme.light ? "#fff" : "#000"
         );
     };
 
