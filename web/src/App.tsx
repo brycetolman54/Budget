@@ -4,21 +4,46 @@ import { useTheme } from "./providers/Theme";
 import { useEffect } from "react";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
+import { useMessage } from "./providers/Message/MessageProvider";
 
 const App = () => {
     const isAuthenticated = (): boolean => {
-        return false;
+        return true;
     };
 
-    const { theme, applyTheme } = useTheme();
+    const { theme, applyTheme, updateTheme } = useTheme();
 
     useEffect(() => {
         applyTheme(theme);
     }, [theme]);
 
+    const { showMessage } = useMessage();
+
     return (
         <>
             <div id="mine">mine</div>
+            <button
+                onClick={() =>
+                    updateTheme({
+                        ...theme,
+                        primary: "#0F0",
+                    })
+                }
+            >
+                Change Theme
+            </button>
+            <button
+                onClick={() =>
+                    showMessage("Hello World", true, "Confirm", () =>
+                        updateTheme({
+                            ...theme,
+                            primary: "#0F0",
+                        })
+                    )
+                }
+            >
+                Show Message
+            </button>
             <BrowserRouter>
                 {isAuthenticated() ? (
                     <AuthenticatedRoutes />

@@ -5,6 +5,7 @@ interface MessageSet {
     showMessage: (
         message: string,
         accept: boolean,
+        acceptText?: string,
         onAccept?: () => void
     ) => void;
 }
@@ -24,14 +25,17 @@ const MessageProvider: React.FC<Props> = ({ children }) => {
     const [message, setMessage] = useState<string | null>(null);
     const [accept, setAccept] = useState<boolean>(false);
     const [onAccept, setOnAccept] = useState<() => void>(() => {});
+    const [acceptText, setAcceptText] = useState<string | null>(null);
 
     const showMessage = (
         message: string,
         accept: boolean,
+        acceptText?: string,
         onAccept?: () => void
     ) => {
         setMessage(message);
         setAccept(accept);
+        setAcceptText(acceptText || null);
         setOnAccept(() => () => {
             if (onAccept) {
                 onAccept();
@@ -47,6 +51,7 @@ const MessageProvider: React.FC<Props> = ({ children }) => {
                 message={message}
                 accept={accept}
                 onAccept={onAccept}
+                acceptText={acceptText}
                 onReject={() => setMessage(null)}
             />
         </MessageContext.Provider>

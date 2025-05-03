@@ -1,0 +1,17 @@
+.message-window {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.overlay {
+    position: fixed;
+    backdrop-filter: blur(3px);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
