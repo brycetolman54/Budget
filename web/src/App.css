@@ -5,3 +5,7 @@
     background-color: var(--primary);
     color: var(--secondary);
 }
+
+:root {
+    background-color: var(--background);
+}

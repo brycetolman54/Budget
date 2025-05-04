@@ -46,7 +46,11 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
         );
         document.documentElement.style.setProperty(
             "--background",
-            theme.light ? "#fff" : "#000"
+            theme.light ? "#fff" : "#4b4b4b"
+        );
+        document.documentElement.style.setProperty(
+            "--text-color",
+            theme.light ? "#000" : "#fff"
         );
     };
 

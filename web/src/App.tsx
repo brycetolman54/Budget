@@ -5,10 +5,13 @@ import { useEffect } from "react";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import { useMessage } from "./providers/Message/MessageProvider";
+import { useUser } from "./providers/User";
 
 const App = () => {
+    const { user, token } = useUser();
+
     const isAuthenticated = (): boolean => {
-        return true;
+        return !!user && !!token;
     };
 
     const { theme, applyTheme, updateTheme } = useTheme();
@@ -34,11 +37,16 @@ const App = () => {
             </button>
             <button
                 onClick={() =>
-                    showMessage("Hello World", true, "Confirm", () =>
-                        updateTheme({
-                            ...theme,
-                            primary: "#0F0",
-                        })
+                    showMessage(
+                        "Hello World I want to talk to you about something but like something so important I need you to talk to me about it right now",
+                        true,
+                        "Confirm",
+                        undefined,
+                        () =>
+                            updateTheme({
+                                ...theme,
+                                primary: "#0F0",
+                            })
                     )
                 }
             >
