@@ -6,9 +6,12 @@ import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import { useMessage } from "./providers/Message/MessageProvider";
 import { useUser } from "./providers/User";
+import { AuthToken, User } from "shared";
+import { CheckCircle } from "./components/Icons/CheckCircle/CheckCircle";
+import { CrossCircle } from "./components/Icons/CrossCircle/CrossCircle";
 
 const App = () => {
-    const { user, token } = useUser();
+    const { user, token, setUser, clearUser } = useUser();
 
     const isAuthenticated = (): boolean => {
         return !!user && !!token;
@@ -24,12 +27,15 @@ const App = () => {
 
     return (
         <>
+            <CheckCircle />
+            <CrossCircle />
             <div id="mine">mine</div>
             <button
                 onClick={() =>
                     updateTheme({
                         ...theme,
                         primary: "#0F0",
+                        light: false,
                     })
                 }
             >
@@ -45,13 +51,30 @@ const App = () => {
                         () =>
                             updateTheme({
                                 ...theme,
-                                primary: "#0F0",
+                                primary: "#FFF",
                             })
                     )
                 }
             >
                 Show Message
             </button>
+            <button
+                onClick={() =>
+                    setUser(
+                        new User("bryce", "bryce", "mine@me.com", "mine.com", {
+                            primary: "#F00",
+                            secondary: "#0F0",
+                            tertiary: "#00F",
+                            light: false,
+                        }),
+                        AuthToken.Generate(),
+                        true
+                    )
+                }
+            >
+                Set User
+            </button>
+            <button onClick={() => clearUser()}>Clear User</button>
             <BrowserRouter>
                 {isAuthenticated() ? (
                     <AuthenticatedRoutes />

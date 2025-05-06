@@ -1,3 +1,7 @@
+:root {
+    --animation-duration: 0.1s;
+}
+
 .overlay {
     position: fixed;
     backdrop-filter: blur(3px);
@@ -7,6 +11,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: blur-in var(--animation-duration) ease-in;
+}
+
+@keyframes blur-in {
+    from {
+        backdrop-filter: blur(0px);
+    }
+    to {
+        backdrop-filter: blur(3px);
+    }
 }
 
 .message-window {
@@ -20,6 +34,18 @@
     justify-content: center;
     max-width: 60%;
     border: solid 4px var(--primary);
+    animation: pop-up var(--animation-duration) ease-in;
+}
+
+@keyframes pop-up {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 #message-text {

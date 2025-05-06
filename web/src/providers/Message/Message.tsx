@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { ThemeContext, useTheme } from "../Theme";
+import { useEffect } from "react";
+import { useTheme } from "../Theme";
 import "./Message.css";
 
 interface Props {

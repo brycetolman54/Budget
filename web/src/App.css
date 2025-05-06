@@ -1,11 +1,11 @@
+:root {
+    background-color: var(--background);
+}
+
 #mine {
     border-color: var(--tertiary);
     border-width: 4px;
     border-style: solid;
     background-color: var(--primary);
     color: var(--secondary);
-}
-
-:root {
-    background-color: var(--background);
 }

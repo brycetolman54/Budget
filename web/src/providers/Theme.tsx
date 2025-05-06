@@ -1,4 +1,4 @@
-import { Context, createContext, useContext, useState } from "react";
+import { Context, createContext, useContext, useEffect, useState } from "react";
 import { defaultTheme, Theme } from "shared";
 import { useUser } from "./User";
 
@@ -28,7 +28,7 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
         const primary = user?.theme.primary || defaultTheme.primary;
         const secondary = user?.theme.secondary || defaultTheme.secondary;
         const tertiary = user?.theme.tertiary || defaultTheme.tertiary;
-        const light = user?.theme.light || defaultTheme.light;
+        const light = !!user ? user.theme.light : defaultTheme.light;
         return { primary, secondary, tertiary, light };
     };
 
@@ -53,6 +53,10 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
             theme.light ? "#000" : "#fff"
         );
     };
+
+    useEffect(() => {
+        setTheme(retrieveFromUser());
+    }, [user]);
 
     return (
         <ThemeContext.Provider
