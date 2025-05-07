@@ -7,8 +7,12 @@ import Register from "./components/Auth/Register/Register";
 import { useMessage } from "./providers/Message/MessageProvider";
 import { useUser } from "./providers/User";
 import { AuthToken, User } from "shared";
-import { CheckCircle } from "./components/Icons/CheckCircle/CheckCircle";
-import { CrossCircle } from "./components/Icons/CrossCircle/CrossCircle";
+import {
+    CheckCircle,
+    CrossCircle,
+    PlusCircle,
+    WindowX,
+} from "./components/Icons";
 import { useStatus } from "./providers/Status/StatusProvider";
 import { StatusHolder } from "./providers/Status/StatusHolder";
 
@@ -27,12 +31,15 @@ const App = () => {
 
     const { showMessage } = useMessage();
 
-    const { statusList, displayStatus, deleteAllStatuses } = useStatus();
+    const { displaySuccessStatus, displayStatus, deleteAllStatuses } =
+        useStatus();
 
     return (
         <>
             <CheckCircle />
             <CrossCircle />
+            <PlusCircle />
+            <WindowX onClick={() => null} />
             <div id="mine">mine</div>
             <button
                 onClick={() =>
@@ -65,12 +72,19 @@ const App = () => {
             <button
                 onClick={() =>
                     setUser(
-                        new User("bryce", "bryce", "mine@me.com", "mine.com", {
-                            primary: "#F00",
-                            secondary: "#0F0",
-                            tertiary: "#00F",
-                            light: false,
-                        }),
+                        new User(
+                            "bryce",
+                            "bryce",
+                            "mine@me.com",
+                            "mine.com",
+                            {
+                                primary: "#F00",
+                                secondary: "#0F0",
+                                tertiary: "#00F",
+                                light: false,
+                            },
+                            "tolman"
+                        ),
                         AuthToken.Generate(),
                         true
                     )
@@ -79,11 +93,15 @@ const App = () => {
                 Set User
             </button>
             <button onClick={() => clearUser()}>Clear User</button>
-            <button onClick={() => displayStatus("Testing", "test", 1000)}>
+            <button onClick={() => displayStatus("testing", "test", 0)}>
                 Display Status
+            </button>
+            <button onClick={() => displaySuccessStatus("test", 10000)}>
+                Display Success
             </button>
             <button onClick={() => deleteAllStatuses()}>Clear Status</button>
             <StatusHolder />
+
             <BrowserRouter>
                 {isAuthenticated() ? (
                     <AuthenticatedRoutes />

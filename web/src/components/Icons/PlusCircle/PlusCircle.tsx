@@ -1,13 +1,13 @@
-import "./CrossCircle.css";
+import "./PlusCircle.css";
 
-export const CrossCircle = () => {
+export const PlusCircle = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             width="24"
             height="24"
-            className="cross-circle"
+            className="plus-circle"
         >
             <circle
                 cx="12"
@@ -18,19 +18,19 @@ export const CrossCircle = () => {
                 strokeWidth="2"
             />
             <line
-                x1="8"
-                y1="8"
-                x2="16"
-                y2="16"
+                x1="7"
+                y1="12"
+                x2="17"
+                y2="12"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
             />
             <line
-                x1="16"
-                y1="8"
-                x2="8"
-                y2="16"
+                x1="12"
+                y1="7"
+                x2="12"
+                y2="17"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"

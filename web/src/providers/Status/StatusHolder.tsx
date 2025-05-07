@@ -7,7 +7,7 @@ interface Props {
     // Define any props if needed
 }
 
-export const StatusHolder = () => {
+export const StatusHolder = (props: Props) => {
     const { statusList, deleteStatus } = useStatus();
 
     useEffect(() => {

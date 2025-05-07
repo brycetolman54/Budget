@@ -1,3 +1,9 @@
+import {
+    CheckCircle,
+    CrossCircle,
+    PlusCircle,
+    WindowX,
+} from "../../components/Icons";
 import { StatusType } from "./Status";
 
 interface Props {
@@ -8,5 +14,35 @@ interface Props {
 }
 
 export const Status = (props: Props) => {
-    return <div>Status</div>;
+    let icon;
+    switch (props.type) {
+        case StatusType.Success:
+            icon = <CheckCircle />;
+            break;
+        case StatusType.Error:
+            icon = <CrossCircle />;
+            break;
+        case StatusType.Info:
+            icon = <PlusCircle />;
+            break;
+        default:
+            icon = null;
+    }
+
+    return (
+        <>
+            <div className="status-header">
+                <div className="status-icon">{icon}</div>
+                <div className="status-title">
+                    <strong>{props.title}</strong>
+                </div>
+                <div className="status-close">
+                    <WindowX onClick={props.onClose} />
+                </div>
+            </div>
+            <div className="status-body">
+                <div className="status-text">{props.text}</div>
+            </div>
+        </>
+    );
 };

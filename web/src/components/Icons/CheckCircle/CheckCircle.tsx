@@ -15,7 +15,7 @@ export const CheckCircle = () => {
                 r="10"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
             />
             <line
                 x1="7"
@@ -23,8 +23,8 @@ export const CheckCircle = () => {
                 x2="11"
                 y2="17"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
             />
             <line
                 x1="11"
@@ -32,8 +32,8 @@ export const CheckCircle = () => {
                 x2="17"
                 y2="8"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
             />
         </svg>
     );

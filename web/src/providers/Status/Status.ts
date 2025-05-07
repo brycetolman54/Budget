@@ -38,13 +38,13 @@ export const makeSuccessStatus = (
     text: string,
     duration: number = 0
 ): Status => {
-    return makeStatus(SUCCESS_STATUS_TITLE, text, StatusType.Success, duration);
+    return makeStatus(SUCCESS_STATUS_TITLE, text, duration, StatusType.Success);
 };
 
 export const makeErrorStatus = (text: string, duration: number = 0): Status => {
-    return makeStatus(ERROR_STATUS_TITLE, text, StatusType.Error, duration);
+    return makeStatus(ERROR_STATUS_TITLE, text, duration, StatusType.Error);
 };
 
 export const makeInfoStatus = (text: string, duration: number = 0): Status => {
-    return makeStatus(INFO_STATUS_TITLE, text, StatusType.Info, duration);
+    return makeStatus(INFO_STATUS_TITLE, text, duration, StatusType.Info);
 };

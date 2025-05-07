@@ -6,19 +6,22 @@ export class User {
     private _email: string;
     private _imageUrl: string;
     private _theme: Theme;
+    private _group: string;
 
     constructor(
         username: string,
         fullName: string,
         email: string,
         imageUrl: string,
-        theme: Theme
+        theme: Theme,
+        group: string
     ) {
         this._username = username;
         this._fullName = fullName;
         this._email = email;
         this._imageUrl = imageUrl;
         this._theme = theme;
+        this._group = group;
     }
 
     public get username(): string {
@@ -41,6 +44,10 @@ export class User {
         return this._theme;
     }
 
+    public get group(): string {
+        return this._group;
+    }
+
     public toJson(): string {
         return JSON.stringify(this);
     }
@@ -53,13 +60,15 @@ export class User {
                 _email: string;
                 _imageUrl: string;
                 _theme: Theme;
+                _group: string;
             } = JSON.parse(json);
             return new User(
                 jsonObject._username,
                 jsonObject._fullName,
                 jsonObject._email,
                 jsonObject._imageUrl,
-                jsonObject._theme
+                jsonObject._theme,
+                jsonObject._group
             );
         } else {
             return null;
