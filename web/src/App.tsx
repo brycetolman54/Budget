@@ -9,6 +9,8 @@ import { useUser } from "./providers/User";
 import { AuthToken, User } from "shared";
 import { CheckCircle } from "./components/Icons/CheckCircle/CheckCircle";
 import { CrossCircle } from "./components/Icons/CrossCircle/CrossCircle";
+import { useStatus } from "./providers/Status/StatusProvider";
+import { StatusHolder } from "./providers/Status/StatusHolder";
 
 const App = () => {
     const { user, token, setUser, clearUser } = useUser();
@@ -24,6 +26,8 @@ const App = () => {
     }, [theme]);
 
     const { showMessage } = useMessage();
+
+    const { statusList, displayStatus, deleteAllStatuses } = useStatus();
 
     return (
         <>
@@ -75,6 +79,11 @@ const App = () => {
                 Set User
             </button>
             <button onClick={() => clearUser()}>Clear User</button>
+            <button onClick={() => displayStatus("Testing", "test", 1000)}>
+                Display Status
+            </button>
+            <button onClick={() => deleteAllStatuses()}>Clear Status</button>
+            <StatusHolder />
             <BrowserRouter>
                 {isAuthenticated() ? (
                     <AuthenticatedRoutes />

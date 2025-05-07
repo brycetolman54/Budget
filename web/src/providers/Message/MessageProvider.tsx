@@ -15,7 +15,7 @@ const defaultMessageSet: MessageSet = {
     showMessage: (message: string, accept: boolean) => {},
 };
 
-export const MessageContext: Context<MessageSet> =
+const MessageContext: Context<MessageSet> =
     createContext<MessageSet>(defaultMessageSet);
 
 interface Props {

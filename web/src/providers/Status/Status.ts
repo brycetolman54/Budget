@@ -3,14 +3,12 @@ import { v4 } from "uuid";
 const SUCCESS_STATUS_TITLE = "Success";
 const ERROR_STATUS_TITLE = "Error";
 const INFO_STATUS_TITLE = "Info";
-const WARNING_STATUS_TITLE = "Warning";
 
 export enum StatusType {
-    Success = 0,
-    Error = 1,
-    Info = 2,
-    Warning = 3,
-    Other = 4,
+    Other = 0,
+    Success = 1,
+    Error = 2,
+    Info = 3,
 }
 
 export interface Status {
@@ -24,8 +22,8 @@ export interface Status {
 export const makeStatus = (
     title: string,
     text: string,
-    type: StatusType = StatusType.Other,
-    duration: number
+    duration: number = 0,
+    type: StatusType = StatusType.Other
 ) => {
     return {
         id: v4().toString(),
@@ -49,11 +47,4 @@ export const makeErrorStatus = (text: string, duration: number = 0): Status => {
 
 export const makeInfoStatus = (text: string, duration: number = 0): Status => {
     return makeStatus(INFO_STATUS_TITLE, text, StatusType.Info, duration);
-};
-
-export const makeWarningStatus = (
-    text: string,
-    duration: number = 0
-): Status => {
-    return makeStatus(WARNING_STATUS_TITLE, text, StatusType.Warning, duration);
 };

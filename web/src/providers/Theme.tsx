@@ -14,7 +14,7 @@ const defaultThemeSet: ThemeSet = {
     applyTheme: (theme: Theme) => {},
 };
 
-export const ThemeContext: Context<ThemeSet> =
+const ThemeContext: Context<ThemeSet> =
     createContext<ThemeSet>(defaultThemeSet);
 
 interface Props {

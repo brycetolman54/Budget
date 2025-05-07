@@ -18,8 +18,7 @@ const defaultUserSet: UserSet = {
     clearUser: () => null,
 };
 
-export const UserContext: Context<UserSet> =
-    createContext<UserSet>(defaultUserSet);
+const UserContext: Context<UserSet> = createContext<UserSet>(defaultUserSet);
 
 interface Props {
     children: React.ReactNode;
