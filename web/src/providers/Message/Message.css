@@ -1,5 +1,5 @@
 :root {
-    --animation-duration: 0.1s;
+    --message-animation: 0.1s;
 }
 
 .overlay {
@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: blur-in var(--animation-duration) ease-in;
+    animation: blur-in var(--message-animation) ease-in;
 }
 
 @keyframes blur-in {
@@ -34,7 +34,7 @@
     justify-content: center;
     max-width: 60%;
     border: solid 4px var(--primary);
-    animation: pop-up var(--animation-duration) ease-in;
+    animation: pop-up var(--message-animation) ease-in;
 }
 
 @keyframes pop-up {

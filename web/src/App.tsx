@@ -10,6 +10,7 @@ import { AuthToken, User } from "shared";
 import {
     CheckCircle,
     CrossCircle,
+    ConcentricCircle,
     PlusCircle,
     WindowX,
 } from "./components/Icons";
@@ -39,6 +40,7 @@ const App = () => {
             <CheckCircle />
             <CrossCircle />
             <PlusCircle />
+            <ConcentricCircle />
             <WindowX onClick={() => null} />
             <div id="mine">mine</div>
             <button
@@ -96,7 +98,7 @@ const App = () => {
             <button onClick={() => displayStatus("testing", "test", 0)}>
                 Display Status
             </button>
-            <button onClick={() => displaySuccessStatus("test", 10000)}>
+            <button onClick={() => displaySuccessStatus("test", 0)}>
                 Display Success
             </button>
             <button onClick={() => deleteAllStatuses()}>Clear Status</button>

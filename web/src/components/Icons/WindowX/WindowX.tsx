@@ -12,13 +12,13 @@ export const WindowX = (props: Props) => {
         applyTheme(theme);
     }, [theme]);
 
-    const boxSize = "22";
-    const startPixelBox = "2";
-    const length = "16";
+    const boxSize = "24";
+    const startPixelBox = "5";
+    const length = "14";
     const roundValue = "4";
 
-    const startPixelLine = "6";
-    const endPixelLine = "14";
+    const startPixelLine = "8";
+    const endPixelLine = "16";
 
     return (
         <svg
