@@ -1,5 +1,6 @@
 :root {
     --status-radius: 4px;
+    --status-opacity: 0.9;
 }
 
 .status-holder {
@@ -19,10 +20,10 @@
 .status-header {
     display: flex;
     height: 24px;
-    background-color: rgba(186, 184, 184, 0.7);
+    background-color: rgba(186, 184, 184, var(--status-opacity));
     padding: 2px 4px;
     border-radius: var(--status-radius) var(--status-radius) 0 0;
-    border-bottom: solid rgb(179, 179, 179) 1px;
+    border-bottom: solid var(--primary) 1px;
 }
 
 .status-icon {
@@ -40,7 +41,7 @@
 }
 
 .status-body {
-    background-color: rgb(229, 228, 228);
+    background-color: rgb(229, 228, 228, var(--status-opacity));
     border-radius: 0 0 var(--status-radius) var(--status-radius);
 }
 

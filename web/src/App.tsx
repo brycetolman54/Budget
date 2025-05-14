@@ -32,8 +32,13 @@ const App = () => {
 
     const { showMessage } = useMessage();
 
-    const { displaySuccessStatus, displayStatus, deleteAllStatuses } =
-        useStatus();
+    const {
+        displaySuccessStatus,
+        displayErrorStatus,
+        displayInfoStatus,
+        displayStatus,
+        deleteAllStatuses,
+    } = useStatus();
 
     return (
         <>
@@ -100,6 +105,12 @@ const App = () => {
             </button>
             <button onClick={() => displaySuccessStatus("test", 0)}>
                 Display Success
+            </button>
+            <button onClick={() => displayErrorStatus("test", 0)}>
+                Display Error
+            </button>
+            <button onClick={() => displayInfoStatus("test", 0)}>
+                Display Info
             </button>
             <button onClick={() => deleteAllStatuses()}>Clear Status</button>
             <StatusHolder />
