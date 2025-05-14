@@ -7,6 +7,7 @@ export class User {
     private _imageUrl: string;
     private _theme: Theme;
     private _group: string;
+    private _language: string;
 
     constructor(
         username: string,
@@ -14,7 +15,8 @@ export class User {
         email: string,
         imageUrl: string,
         theme: Theme,
-        group: string
+        group: string,
+        language: string
     ) {
         this._username = username;
         this._fullName = fullName;
@@ -22,6 +24,7 @@ export class User {
         this._imageUrl = imageUrl;
         this._theme = theme;
         this._group = group;
+        this._language = language;
     }
 
     public get username(): string {
@@ -48,6 +51,10 @@ export class User {
         return this._group;
     }
 
+    public get language(): string {
+        return this._language;
+    }
+
     public toJson(): string {
         return JSON.stringify(this);
     }
@@ -61,6 +68,7 @@ export class User {
                 _imageUrl: string;
                 _theme: Theme;
                 _group: string;
+                _language: string;
             } = JSON.parse(json);
             return new User(
                 jsonObject._username,
@@ -68,7 +76,8 @@ export class User {
                 jsonObject._email,
                 jsonObject._imageUrl,
                 jsonObject._theme,
-                jsonObject._group
+                jsonObject._group,
+                jsonObject._language
             );
         } else {
             return null;

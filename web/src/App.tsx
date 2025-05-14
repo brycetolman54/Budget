@@ -16,6 +16,7 @@ import {
 } from "./components/Icons";
 import { useStatus } from "./providers/Status/StatusProvider";
 import { StatusHolder } from "./providers/Status/StatusHolder";
+import { useLang } from "./providers/Language";
 
 const App = () => {
     const { user, token, setUser, clearUser } = useUser();
@@ -39,6 +40,12 @@ const App = () => {
         displayStatus,
         deleteAllStatuses,
     } = useStatus();
+
+    const { lang, updateLanguage } = useLang();
+
+    useEffect(() => {
+        document.title = lang.title;
+    }, [lang]);
 
     return (
         <>
@@ -90,7 +97,8 @@ const App = () => {
                                 tertiary: "#00F",
                                 light: false,
                             },
-                            "tolman"
+                            "tolman",
+                            "es"
                         ),
                         AuthToken.Generate(),
                         true
@@ -113,8 +121,13 @@ const App = () => {
                 Display Info
             </button>
             <button onClick={() => deleteAllStatuses()}>Clear Status</button>
-            <StatusHolder />
+            <button onClick={() => updateLanguage("es")}>Set Language</button>
 
+            <div>
+                <p>{lang.welcome}</p>
+            </div>
+
+            <StatusHolder />
             <BrowserRouter>
                 {isAuthenticated() ? (
                     <AuthenticatedRoutes />

@@ -1,5 +1,5 @@
 import { Context, createContext, useContext, useEffect, useState } from "react";
-import { defaultTheme, Theme } from "shared";
+import { Theme } from "shared";
 import { useUser } from "./User";
 
 interface ThemeSet {
@@ -7,6 +7,13 @@ interface ThemeSet {
     updateTheme: (theme: Theme) => void;
     applyTheme: (theme: Theme) => void;
 }
+
+const defaultTheme: Theme = {
+    primary: "#000000",
+    secondary: "#FFFFFF",
+    tertiary: "#F00",
+    light: true,
+};
 
 const defaultThemeSet: ThemeSet = {
     theme: defaultTheme,
