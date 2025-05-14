@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useTheme } from "../../../providers/Theme";
+import { useTheme } from "../../../../providers/Theme";
 import "./WindowX.css";
 
 interface Props {

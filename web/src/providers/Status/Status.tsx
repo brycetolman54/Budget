@@ -3,8 +3,8 @@ import {
     ConcentricCircle,
     CrossCircle,
     PlusCircle,
-    WindowX,
-} from "../../components/Icons";
+} from "../../components/Icons/StatusIcons";
+import { WindowX } from "../../components/Icons/SiteIcons";
 import { StatusType } from "./Status";
 import "./Status.css";
 

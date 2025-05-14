@@ -1,22 +1,23 @@
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+    BrowserRouter,
+    Navigate,
+    Route,
+    Routes,
+    useLocation,
+} from "react-router-dom";
+import ReactDOMServer from "react-dom/server";
 import "./App.css";
 import { useTheme } from "./providers/Theme";
 import { useEffect } from "react";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
-import { useMessage } from "./providers/Message/MessageProvider";
+import SiteLayout from "./components/Layout/SiteLayout/SiteLayout";
 import { useUser } from "./providers/User";
 import { AuthToken, User } from "shared";
-import {
-    CheckCircle,
-    CrossCircle,
-    ConcentricCircle,
-    PlusCircle,
-    WindowX,
-} from "./components/Icons";
-import { useStatus } from "./providers/Status/StatusProvider";
 import { StatusHolder } from "./providers/Status/StatusHolder";
 import { useLang } from "./providers/Language";
+import NotFound from "./components/NotFound/NotFound";
+import { SiteLogo } from "./components/Icons/SiteIcons";
 
 const App = () => {
     const { user, token, setUser, clearUser } = useUser();
@@ -25,64 +26,26 @@ const App = () => {
         return !!user && !!token;
     };
 
-    const { theme, applyTheme, updateTheme } = useTheme();
+    const { theme, applyTheme } = useTheme();
 
     useEffect(() => {
         applyTheme(theme);
     }, [theme]);
 
-    const { showMessage } = useMessage();
-
-    const {
-        displaySuccessStatus,
-        displayErrorStatus,
-        displayInfoStatus,
-        displayStatus,
-        deleteAllStatuses,
-    } = useStatus();
-
-    const { lang, updateLanguage } = useLang();
+    const { lang } = useLang();
 
     useEffect(() => {
         document.title = lang.title;
     }, [lang]);
 
+    const logoURL = `data:image/svg+xml,${ReactDOMServer.renderToStaticMarkup(
+        <SiteLogo size="32" />
+    )}`;
+    const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+    link.href = logoURL;
+
     return (
         <>
-            <CheckCircle />
-            <CrossCircle />
-            <PlusCircle />
-            <ConcentricCircle />
-            <WindowX onClick={() => null} />
-            <div id="mine">mine</div>
-            <button
-                onClick={() =>
-                    updateTheme({
-                        ...theme,
-                        primary: "#0F0",
-                        light: false,
-                    })
-                }
-            >
-                Change Theme
-            </button>
-            <button
-                onClick={() =>
-                    showMessage(
-                        "Hello World I want to talk to you about something but like something so important I need you to talk to me about it right now",
-                        true,
-                        "Confirm",
-                        undefined,
-                        () =>
-                            updateTheme({
-                                ...theme,
-                                primary: "#FFF",
-                            })
-                    )
-                }
-            >
-                Show Message
-            </button>
             <button
                 onClick={() =>
                     setUser(
@@ -108,24 +71,6 @@ const App = () => {
                 Set User
             </button>
             <button onClick={() => clearUser()}>Clear User</button>
-            <button onClick={() => displayStatus("testing", "test", 0)}>
-                Display Status
-            </button>
-            <button onClick={() => displaySuccessStatus("test", 0)}>
-                Display Success
-            </button>
-            <button onClick={() => displayErrorStatus("test", 0)}>
-                Display Error
-            </button>
-            <button onClick={() => displayInfoStatus("test", 0)}>
-                Display Info
-            </button>
-            <button onClick={() => deleteAllStatuses()}>Clear Status</button>
-            <button onClick={() => updateLanguage("es")}>Set Language</button>
-
-            <div>
-                <p>{lang.welcome}</p>
-            </div>
 
             <StatusHolder />
             <BrowserRouter>
@@ -142,7 +87,12 @@ const App = () => {
 const AuthenticatedRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<div>Home</div>} />
+            <Route element={<SiteLayout />}>
+                <Route index element={<Navigate to="home" />} />
+                <Route path="1" element={<div>1</div>} />
+                <Route path="2" element={<div>2</div>} />
+                <Route path="*" element={<NotFound />} />
+            </Route>
         </Routes>
     );
 };
@@ -152,8 +102,8 @@ const UnauthenticatedRoutes = () => {
 
     return (
         <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             <Route
                 path="*"
                 element={<Login originalUrl={location.pathname} />}

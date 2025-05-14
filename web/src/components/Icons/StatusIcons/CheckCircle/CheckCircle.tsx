@@ -1,22 +1,9 @@
+import { StatusIcon } from "../StatusIcon";
 import "./CheckCircle.css";
 
 export const CheckCircle = () => {
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            className="check-circle"
-        >
-            <circle
-                cx="12"
-                cy="12"
-                r="10"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-            />
+        <StatusIcon class="check-circle">
             <line
                 x1="7"
                 y1="12"
@@ -35,6 +22,6 @@ export const CheckCircle = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
             />
-        </svg>
+        </StatusIcon>
     );
 };
