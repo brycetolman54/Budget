@@ -13,7 +13,7 @@ import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import SiteLayout from "./components/Layout/SiteLayout/SiteLayout";
 import { useUser } from "./providers/User";
-import { AuthToken, User } from "shared";
+import { AuthToken, AuthTokenType, User } from "shared";
 import { StatusHolder } from "./providers/Status/StatusHolder";
 import { useLang } from "./providers/Language";
 import NotFound from "./components/NotFound/NotFound";
@@ -39,7 +39,7 @@ const App = () => {
     }, [lang]);
 
     const logoURL = `data:image/svg+xml,${ReactDOMServer.renderToStaticMarkup(
-        <SiteLogo size="32" />
+        <SiteLogo size="32" color="white" />
     )}`;
     const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
     link.href = logoURL;
@@ -63,7 +63,7 @@ const App = () => {
                             "tolman",
                             "es"
                         ),
-                        AuthToken.Generate(),
+                        AuthToken.Generate(3),
                         true
                     )
                 }
@@ -75,7 +75,7 @@ const App = () => {
             <StatusHolder />
             <BrowserRouter>
                 {isAuthenticated() ? (
-                    <AuthenticatedRoutes />
+                    <AuthenticatedRoutes tokenType={token!.type} />
                 ) : (
                     <UnauthenticatedRoutes />
                 )}
@@ -84,17 +84,51 @@ const App = () => {
     );
 };
 
-const AuthenticatedRoutes = () => {
+interface AuthProps {
+    tokenType: AuthTokenType;
+}
+
+const AuthenticatedRoutes = (props: AuthProps) => {
     return (
-        <Routes>
-            <Route element={<SiteLayout />}>
-                <Route index element={<Navigate to="home" />} />
-                <Route path="1" element={<div>1</div>} />
-                <Route path="2" element={<div>2</div>} />
-                <Route path="*" element={<NotFound />} />
-            </Route>
-        </Routes>
+        <>
+            <Routes>
+                <Route element={<SiteLayout />}>
+                    <Route index element={<Navigate to="home" />} />
+                    {renderRoutes(props.tokenType)}
+                    <Route path="*" element={<NotFound />} />
+                </Route>
+            </Routes>
+        </>
     );
+};
+
+const renderRoutes = (tokenType: AuthTokenType) => {
+    switch (tokenType) {
+        case AuthTokenType.Admin:
+            return (
+                <>
+                    <Route path="1" element={<div>Admin Routes</div>} />
+                </>
+            );
+        case AuthTokenType.Parent:
+            return (
+                <>
+                    <Route path="1" element={<div>Parent Routes</div>} />
+                </>
+            );
+        case AuthTokenType.Child:
+            return (
+                <>
+                    <Route path="1" element={<div>Child Routes</div>} />
+                </>
+            );
+        case AuthTokenType.None:
+            return (
+                <>
+                    <Route path="1" element={<div>None Routes</div>} />
+                </>
+            );
+    }
 };
 
 const UnauthenticatedRoutes = () => {

@@ -2,6 +2,7 @@ import "./SiteLogo.css";
 
 interface Props {
     size: string;
+    color?: string;
 }
 
 export const SiteLogo = (props: Props) => {
@@ -21,7 +22,7 @@ export const SiteLogo = (props: Props) => {
                 cy={center}
                 r={radius}
                 fill="none"
-                stroke="currentColor"
+                stroke={props.color || "currentColor"}
                 strokeWidth="2"
             />
         </svg>
