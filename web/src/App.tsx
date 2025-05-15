@@ -17,7 +17,7 @@ import { AuthToken, AuthTokenType, User } from "shared";
 import { StatusHolder } from "./providers/Status/StatusHolder";
 import { useLang } from "./providers/Language";
 import NotFound from "./components/NotFound/NotFound";
-import { SiteLogo } from "./components/Icons/SiteIcons";
+import { UserIcon, SiteLogo } from "./components/Icons";
 
 const App = () => {
     const { user, token, setUser, clearUser } = useUser();
@@ -71,6 +71,8 @@ const App = () => {
                 Set User
             </button>
             <button onClick={() => clearUser()}>Clear User</button>
+
+            <UserIcon icon="king" />
 
             <StatusHolder />
             <BrowserRouter>

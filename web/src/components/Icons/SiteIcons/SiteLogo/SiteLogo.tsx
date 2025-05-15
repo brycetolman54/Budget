@@ -1,3 +1,4 @@
+import { Icon } from "../../Icon";
 import "./SiteLogo.css";
 
 interface Props {
@@ -10,13 +11,7 @@ export const SiteLogo = (props: Props) => {
     const radius = String(+center - 2);
 
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox={"0 0 " + props.size + " " + props.size}
-            width={props.size}
-            height={props.size}
-            className="site-logo"
-        >
+        <Icon size={props.size} className="site-logo">
             <circle
                 cx={center}
                 cy={center}
@@ -25,6 +20,6 @@ export const SiteLogo = (props: Props) => {
                 stroke={props.color || "currentColor"}
                 strokeWidth="2"
             />
-        </svg>
+        </Icon>
     );
 };

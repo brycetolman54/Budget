@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTheme } from "../../../../providers/Theme";
 import "./WindowX.css";
+import { Icon } from "../../Icon";
 
 interface Props {
     onClick: () => void;
@@ -21,11 +22,8 @@ export const WindowX = (props: Props) => {
     const endPixelLine = "16";
 
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width={boxSize}
-            height={boxSize}
+        <Icon
+            size={boxSize}
             className="window-x"
             onClick={() => props.onClick()}
         >
@@ -58,6 +56,6 @@ export const WindowX = (props: Props) => {
                 strokeWidth="2"
                 strokeLinecap="round"
             />
-        </svg>
+        </Icon>
     );
 };

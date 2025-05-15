@@ -1,22 +1,23 @@
 import { NavLink } from "react-router-dom";
-import { SiteLogo } from "../../Icons/SiteIcons";
 import { useUser } from "../../../providers/User";
 import { AuthTokenType } from "shared";
+import { ShrinkBars, SiteLogo, UserIcon } from "../../Icons";
 
 const NavBar = () => {
-    const { token } = useUser();
+    const { user, token } = useUser();
 
     return (
         <>
             <header>
-                <SiteLogo size="32" />
+                <ShrinkBars />
                 <div id="links">
                     {renderLinks(token!.type)}
                     <NavLink className="nav-link" to="/about">
                         About
                     </NavLink>
                 </div>
-                <div id="shrink-icon">Shrink</div>
+                <SiteLogo size="32" />
+                <UserIcon />
             </header>
         </>
     );
