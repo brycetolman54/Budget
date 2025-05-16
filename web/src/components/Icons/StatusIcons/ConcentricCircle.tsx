@@ -1,15 +1,16 @@
-import { StatusIcon } from "../StatusIcon";
-import "./ConcentricCircle.css";
+interface Props {
+    color: string;
+}
 
-export const ConcentricCircle = () => {
+export const ConcentricCircle = (props: Props) => {
     return (
-        <StatusIcon class="concentric-circle">
+        <>
             <circle
                 cx="12"
                 cy="12"
                 r="6"
                 fill="none"
-                stroke="currentColor"
+                stroke={props.color}
                 strokeWidth="2"
             />
             <circle
@@ -17,9 +18,9 @@ export const ConcentricCircle = () => {
                 cy="12"
                 r="2"
                 fill="none"
-                stroke="currentColor"
+                stroke={props.color}
                 strokeWidth="2"
             />
-        </StatusIcon>
+        </>
     );
 };

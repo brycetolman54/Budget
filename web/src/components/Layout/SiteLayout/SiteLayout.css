@@ -1,0 +1,22 @@
+.site-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    flex: 0 0 40px;
+    position: relative;
+    display: flex;
+    background: var(--primary);
+    align-items: center;
+}
+
+.outlet {
+    flex: 1;
+}
+
+.footer {
+    flex: 0 0 20px;
+    display: flex;
+}

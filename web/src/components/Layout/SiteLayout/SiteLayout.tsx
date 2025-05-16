@@ -1,14 +1,22 @@
+import "./SiteLayout.css";
+
 import { Outlet } from "react-router-dom";
 import Footer from "../Footer/Footer";
-import NavBar from "../Header/NavBar";
+import NavBar from "../NavBar/NavBar";
 
 const SiteLayout = () => {
     return (
-        <>
-            <NavBar />
-            <Outlet />
-            <Footer />
-        </>
+        <div className="site-layout">
+            <div className="header">
+                <NavBar />
+            </div>
+            <div className="outlet">
+                <Outlet />
+            </div>
+            <div className="footer">
+                <Footer />
+            </div>
+        </div>
     );
 };
 

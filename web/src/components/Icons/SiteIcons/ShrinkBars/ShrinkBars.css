@@ -1,0 +1,12 @@
+.shrink-bars {
+    color: white;
+}
+
+.shrink-bars:hover {
+    cursor: pointer;
+    color: #aaaaaa;
+}
+
+.shrink-bars:active {
+    color: rgb(191, 189, 189);
+}

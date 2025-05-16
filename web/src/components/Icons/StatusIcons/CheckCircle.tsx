@@ -1,15 +1,16 @@
-import { StatusIcon } from "../StatusIcon";
-import "./CheckCircle.css";
+interface Props {
+    color: string;
+}
 
-export const CheckCircle = () => {
+export const CheckCircle = (props: Props) => {
     return (
-        <StatusIcon class="check-circle">
+        <>
             <line
                 x1="7"
                 y1="12"
                 x2="11"
                 y2="17"
-                stroke="currentColor"
+                stroke={props.color}
                 strokeWidth="2"
                 strokeLinecap="round"
             />
@@ -18,10 +19,10 @@ export const CheckCircle = () => {
                 y1="17"
                 x2="17"
                 y2="8"
-                stroke="currentColor"
+                stroke={props.color}
                 strokeWidth="2"
                 strokeLinecap="round"
             />
-        </StatusIcon>
+        </>
     );
 };

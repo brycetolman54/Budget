@@ -17,10 +17,10 @@ import { AuthToken, AuthTokenType, User } from "shared";
 import { StatusHolder } from "./providers/Status/StatusHolder";
 import { useLang } from "./providers/Language";
 import NotFound from "./components/NotFound/NotFound";
-import { UserIcon, SiteLogo } from "./components/Icons";
+import { SiteLogo } from "./components/Icons";
 
 const App = () => {
-    const { user, token, setUser, clearUser } = useUser();
+    const { user, token } = useUser();
 
     const isAuthenticated = (): boolean => {
         return !!user && !!token;
@@ -46,34 +46,6 @@ const App = () => {
 
     return (
         <>
-            <button
-                onClick={() =>
-                    setUser(
-                        new User(
-                            "bryce",
-                            "bryce",
-                            "mine@me.com",
-                            "mine.com",
-                            {
-                                primary: "#F00",
-                                secondary: "#0F0",
-                                tertiary: "#00F",
-                                light: false,
-                            },
-                            "tolman",
-                            "es"
-                        ),
-                        AuthToken.Generate(3),
-                        true
-                    )
-                }
-            >
-                Set User
-            </button>
-            <button onClick={() => clearUser()}>Clear User</button>
-
-            <UserIcon icon="king" />
-
             <StatusHolder />
             <BrowserRouter>
                 {isAuthenticated() ? (
@@ -140,10 +112,11 @@ const UnauthenticatedRoutes = () => {
         <Routes>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route
+            {/* <Route
                 path="*"
                 element={<Login originalUrl={location.pathname} />}
-            />
+            /> */}
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 };

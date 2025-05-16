@@ -1,3 +1,5 @@
+import "./UserIcon.css";
+
 import { Icon } from "../Icon";
 import { King } from "./King";
 
@@ -7,12 +9,13 @@ interface Props {
     line_color?: string;
     bg_color?: string;
     ring_color?: string;
+    onClick?: () => void;
 }
 
 export const UserIcon = (props: Props) => {
     return (
         <>
-            <Icon size="32" className="user-icon">
+            <Icon size="32" className="user-icon" onClick={props.onClick}>
                 <circle
                     cx="16"
                     cy="16"
