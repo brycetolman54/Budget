@@ -1,0 +1,17 @@
+.shrink-bars {
+    flex: 0 0 40px;
+}
+
+.header-logo {
+    flex: 1;
+    justify-items: center;
+}
+
+.nav-link-logo {
+    justify-items: center;
+    display: flex;
+}
+
+.user-icon {
+    flex: 0 0 40px;
+}

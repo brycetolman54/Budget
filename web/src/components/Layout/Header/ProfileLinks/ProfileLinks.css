@@ -1,0 +1,11 @@
+.profile-links {
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    background: blue;
+    padding: 10px;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    width: fit-content;
+}
