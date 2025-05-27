@@ -22,7 +22,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const MessageProvider: React.FC<Props> = ({ children }) => {
+export const MessageProvider: React.FC<Props> = ({ children }) => {
     const [message, setMessage] = useState<string | null>(null);
     const [accept, setAccept] = useState<boolean>(false);
     const [onAccept, setOnAccept] = useState<() => void>(() => {});
@@ -64,5 +64,3 @@ const MessageProvider: React.FC<Props> = ({ children }) => {
 };
 
 export const useMessage = () => useContext(MessageContext);
-
-export default MessageProvider;

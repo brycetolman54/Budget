@@ -38,7 +38,7 @@ const NotFound = () => {
                             "tolman",
                             "es"
                         ),
-                        AuthToken.Generate(3),
+                        AuthToken.Generate(1),
                         true
                     )
                 }

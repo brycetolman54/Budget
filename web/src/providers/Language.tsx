@@ -30,7 +30,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const LanguageProvider: React.FC<Props> = ({ children }) => {
+export const LanguageProvider: React.FC<Props> = ({ children }) => {
     const { user } = useUser();
 
     const getLanguage = (lang: string) => {
@@ -78,5 +78,3 @@ const LanguageProvider: React.FC<Props> = ({ children }) => {
 };
 
 export const useLang = () => useContext(LanguageContext);
-
-export default LanguageProvider;

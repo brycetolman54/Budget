@@ -34,7 +34,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const StatusProvider = ({ children }: Props) => {
+export const StatusProvider = ({ children }: Props) => {
     const [statusSet, setStatusSet] = useState(defaultStatusSet);
 
     const addStatus = (status: Status) => {
@@ -93,5 +93,3 @@ const StatusProvider = ({ children }: Props) => {
 };
 
 export const useStatus = () => useContext(StatusContext);
-
-export default StatusProvider;

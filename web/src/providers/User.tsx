@@ -24,7 +24,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const UserProvider: React.FC<Props> = ({ children }) => {
+export const UserProvider: React.FC<Props> = ({ children }) => {
     const saveToLocalStorage = (user: User, token: AuthToken): void => {
         localStorage.setItem(USER_KEY, JSON.stringify(user));
         localStorage.setItem(TOKEN_KEY, JSON.stringify(token));
@@ -77,5 +77,3 @@ const UserProvider: React.FC<Props> = ({ children }) => {
 };
 
 export const useUser = () => useContext(UserContext);
-
-export default UserProvider;

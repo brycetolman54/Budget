@@ -12,12 +12,12 @@ import { useEffect } from "react";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import SiteLayout from "./components/Layout/SiteLayout/SiteLayout";
-import { useUser } from "./providers/User";
 import { AuthToken, AuthTokenType, User } from "shared";
 import { StatusHolder } from "./providers/Status/StatusHolder";
 import { useLang } from "./providers/Language";
 import NotFound from "./components/NotFound/NotFound";
 import { SiteLogo } from "./components/Icons";
+import { useUser } from "./providers";
 
 const App = () => {
     const { user, token } = useUser();

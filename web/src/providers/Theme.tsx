@@ -28,7 +28,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const ThemeProvider: React.FC<Props> = ({ children }) => {
+export const ThemeProvider: React.FC<Props> = ({ children }) => {
     const { user } = useUser();
 
     const retrieveFromUser = (): Theme => {
@@ -53,19 +53,11 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
         );
         document.documentElement.style.setProperty(
             "--background",
-            theme.light ? "#fff" : "#4b4b4b"
+            theme.light ? "#fff" : "#000"
         );
         document.documentElement.style.setProperty(
             "--text-color",
             theme.light ? "#000" : "#fff"
-        );
-        document.documentElement.style.setProperty(
-            "--side-links-bg-color",
-            theme.light ? "rgb(234, 234, 234)" : "grey"
-        );
-        document.documentElement.style.setProperty(
-            "--side-links-bg-color-hover",
-            theme.light ? "rgb(216, 216, 216)" : "rgb(139, 139, 139)"
         );
     };
 
@@ -87,5 +79,3 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
 };
 
 export const useTheme = () => useContext(ThemeContext);
-
-export default ThemeProvider;
