@@ -59,6 +59,14 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
             "--text-color",
             theme.light ? "#000" : "#fff"
         );
+        document.documentElement.style.setProperty(
+            "--side-links-bg-color",
+            theme.light ? "rgb(234, 234, 234)" : "grey"
+        );
+        document.documentElement.style.setProperty(
+            "--side-links-bg-color-hover",
+            theme.light ? "rgb(216, 216, 216)" : "rgb(139, 139, 139)"
+        );
     };
 
     useEffect(() => {
