@@ -1,12 +1,16 @@
+import "./Footer.css";
+
 const Footer = () => {
     return (
         <>
             <div id="author">Bryce Tolman</div>
             <a
-                id="github-link"
+                id="readme-link"
                 href="https://github.com/brycetolman54/Budget/blob/main/README.md"
+                target="_blank"
             >
-                See the Source Code
+                Github README
+                <div>H</div>
             </a>
         </>
     );

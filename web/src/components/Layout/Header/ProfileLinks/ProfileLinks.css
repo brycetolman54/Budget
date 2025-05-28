@@ -6,7 +6,6 @@
     position: fixed;
     inset: 40px 0 20px 0;
     display: flex;
-    z-index: 1;
     flex-direction: column;
 }
 
@@ -15,11 +14,14 @@
 }
 
 @keyframes fill-in {
-    from {
-        z-index: -1;
+    0% {
+        z-index: 1;
     }
-    to {
-        z-index: 5;
+    50% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 4;
     }
 }
 
@@ -28,10 +30,13 @@
 }
 
 @keyframes fill-out {
-    from {
-        z-index: 5;
+    0% {
+        z-index: 4;
     }
-    to {
+    50% {
+        z-index: 4;
+    }
+    0% {
         z-index: -1;
     }
 }
@@ -42,9 +47,8 @@
     top: 1px;
     background: rgb(167, 167, 167);
     display: flex;
-    gap: 5px;
     flex-direction: column;
-    border-radius: 0 0 0 3px;
+    border-radius: 3px;
     padding: 0;
     transform: scale(0);
     width: fit-content;
@@ -79,5 +83,22 @@
 }
 
 .profile-nav-link {
-    padding: 5px;
+    padding: 5px 10px;
+}
+
+.profile-nav-link:first-child {
+    border-radius: 3px 3px 0 0;
+}
+
+.profile-nav-link:last-child {
+    border-radius: 0 0 3px 3px;
+}
+
+.profile-nav-link:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+
+.profile-nav-link:active {
+    color: var(--tertiary);
 }

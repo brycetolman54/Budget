@@ -24,10 +24,6 @@ const ProfileLinks = (props: Props) => {
                     <div className="profile-nav-link">hey</div>
                     <div className="profile-nav-link">you</div>
                     <div className="profile-nav-link">longer</div>
-
-                    <div className="profile-nav-link">
-                        longer than anythign you know
-                    </div>
                 </div>
             </div>
         </>
