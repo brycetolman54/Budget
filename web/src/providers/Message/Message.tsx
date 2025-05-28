@@ -26,8 +26,11 @@ const Message = (props: Props) => {
 
     return (
         <>
-            <div className="overlay">
-                <div className="message-window">
+            <div className="overlay" onClick={() => props.onReject()}>
+                <div
+                    className="message-window"
+                    onClick={(e) => e.stopPropagation()}
+                >
                     <div id="message-text">Message: {props.message}</div>
                     <div className="message-buttons">
                         <button

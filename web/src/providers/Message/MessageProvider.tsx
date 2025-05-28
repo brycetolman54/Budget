@@ -5,9 +5,9 @@ interface MessageSet {
     showMessage: (
         message: string,
         accept: boolean,
+        onAccept?: () => void,
         acceptText?: string,
-        rejectText?: string,
-        onAccept?: () => void
+        rejectText?: string
     ) => void;
 }
 
@@ -32,20 +32,20 @@ export const MessageProvider: React.FC<Props> = ({ children }) => {
     const showMessage = (
         message: string,
         accept: boolean,
+        onAccept?: () => void,
         acceptText?: string,
-        rejectText?: string,
-        onAccept?: () => void
+        rejectText?: string
     ) => {
         setMessage(message);
         setAccept(accept);
-        setAcceptText(acceptText || null);
-        setRejectText(rejectText || null);
         setOnAccept(() => () => {
             if (onAccept) {
                 onAccept();
             }
             setMessage(null);
         });
+        setAcceptText(acceptText || null);
+        setRejectText(rejectText || null);
     };
 
     return (

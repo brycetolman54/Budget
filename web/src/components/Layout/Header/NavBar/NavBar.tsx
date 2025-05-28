@@ -53,6 +53,7 @@ const NavBar = () => {
             />
             <ProfileLinks
                 open={openProfileLinks}
+                setOpen={setOpenProfileLinks}
                 mounted={profileLinksMounted}
             />
         </>

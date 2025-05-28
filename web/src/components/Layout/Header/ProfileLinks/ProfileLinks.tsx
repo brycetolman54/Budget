@@ -2,6 +2,7 @@ import "./ProfileLinks.css";
 
 interface Props {
     open: boolean;
+    setOpen: (open: boolean) => void;
     mounted: boolean;
 }
 
@@ -9,13 +10,25 @@ const ProfileLinks = (props: Props) => {
     return (
         <>
             <div
-                className={`profile-links ${
+                className={`profile-links-overlay ${
                     props.mounted ? (props.open ? "open" : "closed") : ""
                 }`}
+                onClick={() => props.setOpen(!props.open)}
             >
-                <div>hey</div>
-                <div>you</div>
-                <div>longer</div>
+                <div
+                    className={`profile-links ${
+                        props.mounted ? (props.open ? "open" : "closed") : ""
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <div className="profile-nav-link">hey</div>
+                    <div className="profile-nav-link">you</div>
+                    <div className="profile-nav-link">longer</div>
+
+                    <div className="profile-nav-link">
+                        longer than anythign you know
+                    </div>
+                </div>
             </div>
         </>
     );

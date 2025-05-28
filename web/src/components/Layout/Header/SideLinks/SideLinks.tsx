@@ -5,9 +5,9 @@ import { AuthTokenType } from "shared";
 import { useTheme } from "../../../../providers";
 
 interface Props {
-    mounted: boolean;
     open: boolean;
     setOpen: (open: boolean) => void;
+    mounted: boolean;
     tokenType: AuthTokenType;
 }
 

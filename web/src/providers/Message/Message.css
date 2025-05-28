@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: blur-in var(--message-animation) ease-in;
+    animation: blur-in var(--message-animation) ease-in forwards;
 }
 
 @keyframes blur-in {
@@ -73,10 +73,10 @@
 }
 
 #accept-button {
-    background-image: radial-gradient(ellipse at center, #0433a0f9, #3f59efdf);
-    color: white;
+    color: #3f59efdf;
     font-weight: bold;
-    border-color: #3f59efdf;
+    border: solid 3px #3f59efdf;
+    background: var(--background);
     letter-spacing: 1px;
 }
 
@@ -87,10 +87,10 @@
 }
 
 #reject-button {
-    background-image: radial-gradient(ellipse at center, #696a6bf9, #bebebedf);
-    color: white;
+    border: solid 2px #bebebedf;
+    color: #bebebedf;
+    background: var(--background);
     font-weight: bold;
-    border-color: #bebebedf;
     letter-spacing: 1px;
 }
 

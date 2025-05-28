@@ -49,7 +49,11 @@ const NotFound = () => {
             <button onClick={() => displaySuccessStatus("Success!")}>
                 Success
             </button>
-            <button onClick={() => showMessage("Hello World!", false)}>
+            <button
+                onClick={() =>
+                    showMessage("Hello World!", true, () => {}, "Accept")
+                }
+            >
                 Show Message
             </button>
             <button
