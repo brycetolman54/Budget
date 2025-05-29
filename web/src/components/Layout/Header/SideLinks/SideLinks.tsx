@@ -3,6 +3,7 @@ import "./SideLinks.css";
 import { NavLink } from "react-router-dom";
 import { AuthTokenType } from "shared";
 import { useTheme } from "../../../../providers";
+import { LinkIcon } from "../../../Icons";
 
 interface Props {
     open: boolean;
@@ -42,6 +43,7 @@ const SideLinks = (props: Props) => {
                         to="/about"
                         onClick={() => props.setOpen(false)}
                     >
+                        <LinkIcon icon="about" />
                         About
                     </NavLink>
                 </div>
@@ -50,35 +52,50 @@ const SideLinks = (props: Props) => {
     );
 };
 
+type NavLinkInfo = {
+    text: string;
+    to: string;
+    icon: string;
+};
+
 const renderLinks = (tokenType: AuthTokenType, onClick: () => void) => {
-    // in the switch statement, make a pair of the "to" and the elements to go to in an array or something. Then, move the actual returning of the nav links to the bottom (in one place only) and do a map to make all the nav links easy like
+    let links: NavLinkInfo[];
 
     switch (tokenType) {
         case AuthTokenType.Admin:
-            return (
-                <>
-                    <NavLink className="side-nav-link" to="/admin">
-                        Admin Link
-                    </NavLink>
-                </>
-            );
+            links = [
+                { text: "Admin Link", to: "/admin", icon: "admin" },
+                { text: "Parent Link", to: "/parent", icon: "parent" },
+                { text: "Child Link", to: "/child", icon: "child" },
+            ];
+            break;
         case AuthTokenType.Parent:
-            return (
-                <>
-                    <NavLink className="side-nav-link" to="/parent">
-                        Parent Link
-                    </NavLink>
-                </>
-            );
+            links = [
+                { text: "Parent Link", to: "/parent", icon: "parent" },
+                { text: "Child Link", to: "/child", icon: "child" },
+            ];
+            break;
         case AuthTokenType.Child:
-            return (
-                <>
-                    <NavLink className="side-nav-link" to="/child">
-                        Child Link
-                    </NavLink>
-                </>
-            );
+            links = [{ text: "Child Link", to: "/child", icon: "child" }];
+            break;
+        default:
+            links = [];
     }
+
+    return (
+        <>
+            {links.map((link: NavLinkInfo) => (
+                <NavLink
+                    to={link.to}
+                    className="side-nav-link"
+                    onClick={() => onClick()}
+                >
+                    <LinkIcon icon={link.icon} />
+                    {link.text}
+                </NavLink>
+            ))}
+        </>
+    );
 };
 
 export default SideLinks;
