@@ -18,6 +18,7 @@ import { useLang } from "./providers/Language";
 import NotFound from "./components/NotFound/NotFound";
 import { SiteLogo } from "./components/Icons";
 import { useUser } from "./providers";
+import About from "./components/Shared/About/About";
 
 const App = () => {
     const { user, token } = useUser();
@@ -67,7 +68,8 @@ const AuthenticatedRoutes = (props: AuthProps) => {
         <>
             <Routes>
                 <Route element={<SiteLayout />}>
-                    <Route index element={<Navigate to="home" />} />
+                    <Route index element={<Navigate to="notfound" />} />
+                    <Route path="/about" element={<About />} />
                     {renderRoutes(props.tokenType)}
                     <Route path="*" element={<NotFound />} />
                 </Route>
@@ -81,25 +83,33 @@ const renderRoutes = (tokenType: AuthTokenType) => {
         case AuthTokenType.Admin:
             return (
                 <>
-                    <Route path="1" element={<div>Admin Routes</div>} />
+                    <Route path="routes" element={<div>Admin Routes</div>} />
                 </>
             );
         case AuthTokenType.Parent:
             return (
                 <>
-                    <Route path="1" element={<div>Parent Routes</div>} />
+                    <Route path="routes" element={<div>Parent Routes</div>} />
                 </>
             );
         case AuthTokenType.Child:
             return (
                 <>
-                    <Route path="1" element={<div>Child Routes</div>} />
+                    <Route path="routes" element={<div>Child Routes</div>} />
                 </>
             );
         case AuthTokenType.None:
             return (
                 <>
-                    <Route path="1" element={<div>None Routes</div>} />
+                    <Route
+                        path="routes"
+                        element={
+                            <div>
+                                I do not know how you got here, but you should
+                                not be here...
+                            </div>
+                        }
+                    />
                 </>
             );
     }

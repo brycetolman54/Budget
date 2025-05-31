@@ -71,7 +71,7 @@
     0% {
         transform: translateX(-200%);
     }
-    60% {
+    70% {
         transform: translateX(40%);
     }
     100% {

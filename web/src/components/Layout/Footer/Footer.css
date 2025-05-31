@@ -14,3 +14,7 @@
     color: var(--text-color);
     text-decoration: none;
 }
+
+#readme-link:hover {
+    color: rgb(31, 31, 182);
+}
