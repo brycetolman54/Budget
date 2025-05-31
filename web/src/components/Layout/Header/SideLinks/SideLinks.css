@@ -1,5 +1,5 @@
 :root {
-    --side-link-entrance: 0.2s;
+    --side-link-entrance: 0.3s;
 }
 
 .side-links-overlay {
@@ -49,6 +49,7 @@
 
 .side-links {
     flex: 1;
+    position: relative;
     display: flex;
     width: fit-content;
     flex-direction: column;
@@ -61,21 +62,6 @@
     overflow: scroll;
     scrollbar-width: none;
 }
-
-/* .side-links::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        white
-    ); adjust here to match the background better
-    pointer-events: none;
-} */
 
 .side-links.open {
     animation: move-in var(--side-link-entrance) ease-in forwards;
@@ -114,7 +100,10 @@
     text-decoration: none;
     font-size: 1.1rem;
     border: solid var(--text-color) 0;
-    padding: 5px 20px 5px 10px;
+    padding: 5px 20px 5px 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .side-nav-link:not(:last-child) {

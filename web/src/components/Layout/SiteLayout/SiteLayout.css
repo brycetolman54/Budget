@@ -8,7 +8,7 @@
     flex: 0 0 40px;
     position: relative;
     display: flex;
-    background: var(--primary);
+    background: var(--header-footer-bg);
     align-items: center;
 }
 
@@ -20,6 +20,6 @@
     flex: 0 0 20px;
     display: flex;
     align-items: center;
-    background: var(--primary);
+    background: var(--header-footer-bg);
     padding: 0 10px;
 }

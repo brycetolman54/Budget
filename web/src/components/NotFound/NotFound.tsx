@@ -30,9 +30,9 @@ const NotFound = () => {
                                 ring_color: "#000",
                             },
                             {
-                                primary: "#F00",
-                                secondary: "#0F0",
-                                tertiary: "#00F",
+                                primary: "rgba(255, 0, 0)",
+                                secondary: "rgba(0, 255, 0)",
+                                tertiary: "rgba(0, 0, 255)",
                                 light: false,
                             },
                             "tolman",
